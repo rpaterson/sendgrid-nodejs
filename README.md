@@ -241,10 +241,10 @@ email.setSubstitutions({keep: ['secret'], other: ['one', 'two']}); // sub = {kee
 
 ```javascript
 var email     = new sendgrid.Email();
-email.addSection({'-charge-': 'This ship is useless.'}); // section = {'-charge-': 'This ship is useless.'}
+email.addSection('-charge-', 'This ship is useless.'); // section = {'-charge-': 'This ship is useless.'}
 ```
 
-#### setSections 
+#### setSections
 
 ```javascript
 var email     = new sendgrid.Email();
@@ -255,8 +255,8 @@ email.setSections({'-charge-': 'This ship is useless.'}); // section = {'-charge
 
 ```javascript
 var email     = new sendgrid.Email();
-email.setUniqueArg({cow: 'chicken'}); // unique_args = {cow: 'chicken'}
-email.addUniqueArg({cat: 'dog'});     // unique_args = {cow: 'chicken', cat: 'dog'}
+email.setUniqueArg('cow', 'chicken'); // unique_args = {cow: 'chicken'}
+email.addUniqueArg('cat', 'dog'});    // unique_args = {cow: 'chicken', cat: 'dog'}
 ```
 
 #### setUniqueArgs

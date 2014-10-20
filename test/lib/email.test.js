@@ -171,6 +171,29 @@ describe('Email', function () {
     expect(email.html).to.eql('<p>Some html</p>');
   });
 
+  it('should be possible to addUniqueArg', function() {
+    var email = new Email();
+    expect(email.smtpapi.jsonObject()).to.eql({});
+    email.addUniqueArg('cow', 'chicken');
+    email.addUniqueArg('cat', 'dog');
+    expect(email.smtpapi.jsonObject()).to.eql({
+      unique_args: {
+        cow: 'chicken',
+        cat: 'dog'
+      }
+    });
+  });
+
+  it('should be possible to addSection', function() {
+    var email = new Email();
+    expect(email.smtpapi.jsonObject()).to.eql({});
+    email.addSection('-charge-', 'This ship is useless.');
+    expect(email.smtpapi.jsonObject()).to.eql({
+      section: {
+        '-charge-': 'This ship is useless.'
+      }
+    });
+  });
 
   describe('files', function() {
     it('should support adding attachments via path', function() {
