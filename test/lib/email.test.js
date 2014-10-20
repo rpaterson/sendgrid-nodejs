@@ -184,6 +184,17 @@ describe('Email', function () {
     });
   });
 
+  it('should be possible to addSection', function() {
+    var email = new Email();
+    expect(email.smtpapi.jsonObject()).to.eql({});
+    email.addSection('-charge-', 'This ship is useless.');
+    expect(email.smtpapi.jsonObject()).to.eql({
+      section: {
+        '-charge-': 'This ship is useless.'
+      }
+    });
+  });
+
   describe('files', function() {
     it('should support adding attachments via path', function() {
       var email = new Email();
